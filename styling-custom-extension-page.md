@@ -4,14 +4,14 @@ Sometimes certain extensions will add new functionality that requires an additio
 
 To account for these cases, Keycloakify supports the ability to add custom pages and configure them such that style preservation is maintained.
 
-For our example on how to customize this, we will be using Phase Two's otp-form.ftl page. Phase Two provides email OTP codes for logging in and as a result has a special page if OTP codes are enabled in the authorization flow. &#x20;
+For our example on how to customize this, we will be using [Phase Two](https://phasetwo.io/)'s [keycloak-magic-link extension](https://github.com/p2-inc/keycloak-magic-link) `otp-form.ftl` page. The extension provides email OTP codes for logging in and as a result has a special page if OTP codes are enabled in the authorization flow.
 
 {% hint style="success" %}
-You can load the extention that you are using in Keycloak container that is started when running `npx keycloakify start-keycloak`. Use [the `extensionJars option`](testing-your-theme/in-a-keycloak-docker-container.md).
+You can load the extension that you are using in the Keycloak container that is started when running `npx keycloakify start-keycloak`. Use the [`extensionJars option`](testing-your-theme/in-a-keycloak-docker-container.md).
 {% endhint %}
 
 {% embed url="https://github.com/p2-inc/keycloak-magic-link/blob/main/src/main/resources/theme-resources/templates/otp-form.ftl" %}
-You can find the original .ftl file on Phase Two's github
+You can find the original .ftl file on Phase Two's Github
 {% endembed %}
 
 The first thing we will do is create the page under the pages directory, our file name in this case will be `OtpForm.tsx` and paste in some starter code including the template.
@@ -286,7 +286,7 @@ export default function OtpForm(props: PageProps<Extract<KcContext, { pageId: "o
             i18n={i18n}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
-            displayInfo={false}
+            displayInfo={true}
             headerNode={
                 <div id="kc-username" className={kcClsx("kcFormGroupClass")} style={{ fontSize: "16px" }}>
                     <label id="kc-attempted-username">{auth.attemptedUsername}</label>
